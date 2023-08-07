@@ -1,34 +1,48 @@
-<mat-accordion>
-    <ng-container >
-        <mat-expansion-panel hideToggle *ngFor="let faq of dummyDataMap" [disabled]="true" #upcomingMep="matExpansionPanel">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <div>
-                        <button (click)="upcomingMep.expanded = !upcomingMep.expanded">
-                            TOGGLE
-                        </button>
+<div class="AccWrap">
+    <div class="AccWrapInr">
+        <div class="table-header">
+            <div class="t-hdr"></div>
+            <div class="t-hdr">ID</div>
+            <div class="t-hdr">TYPE</div>
+            <div class="t-hdr">Name</div>
+            <div class="t-hdr">PPU</div>
+        </div>
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel hideToggle *ngFor="let data of dummyDataMap" [disabled]="true"
+                #upcomingMep="matExpansionPanel">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="AccHdr">
+                        <div class="t-cnt view" (click)="upcomingMep.expanded = !upcomingMep.expanded">
+                            <button>
+                                Show More
+                            </button>
+                        </div>
+                        <div class="t-cnt">{{data.id}}</div>
+                        <div class="t-cnt">{{data.type}}</div>
+                        <div class="t-cnt">{{data.name}}</div>
+                        <div class="t-cnt">{{data.ppu}}</div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="AccCont w-98">
+                    <div class="AccContInr">
+                        <mat-table [dataSource]="data.topping">
+                            <ng-container matColumnDef="id">
+                                <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+                                <mat-cell *matCellDef="let topping">{{ topping.id }}</mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="type">
+                                <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+                                <mat-cell *matCellDef="let topping">{{ topping.type }}</mat-cell>
+                            </ng-container>
+
+
+                            <mat-header-row *matHeaderRowDef="['id', 'type']"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: ['id', 'type']"></mat-row>
+                        </mat-table>
                     </div>
-                    <div>{{ faq.id }}</div>
-                    <div>{{ faq.type }}</div>
-                    <div>{{ faq.name }}</div>
-                    <div>{{ faq.ppu }}</div>
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-table [dataSource]="faq.topping">
-                <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-                    <mat-cell *matCellDef="let topping">{{ topping.id }}</mat-cell>
-                </ng-container>
-    
-                <ng-container matColumnDef="type">
-                    <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
-                    <mat-cell *matCellDef="let topping">{{ topping.type }}</mat-cell>
-                </ng-container>
-    
-    
-                <mat-header-row *matHeaderRowDef="['id', 'type']"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: ['id', 'type']"></mat-row>
-            </mat-table>
-        </mat-expansion-panel>
-    </ng-container>
-</mat-accordion>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>

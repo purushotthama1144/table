@@ -7,11 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableTreeComponent } from './table-tree/table-tree.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { GanttChartModule } from 'smart-webcomponents-angular/ganttchart';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableTreeComponent
+    TableTreeComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +22,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     BrowserAnimationsModule,
     MatTableModule,
     MatExpansionModule,
+    GanttChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

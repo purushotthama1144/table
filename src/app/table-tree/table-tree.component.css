@@ -1,0 +1,49 @@
+.mat-expansion-panel:not([class*="mat-elevation-z"]) {
+    box-shadow: none;
+}
+
+.t-cnt,
+.t-hdr {
+    width: 20%;
+    color: #707070;
+    text-align: center;
+}
+
+.mat-expansion-panel:nth-child(even) .mat-expansion-panel-header{
+    background-color: #d6cdcd;
+}
+
+.table-header {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    padding: 10px 24px;
+    color: #013333;
+    font-weight: 600;
+    background-color: #ececec;
+}
+
+.view button {
+    cursor: pointer;
+}
+
+.AccContInr {
+    width: 60%;
+    margin-right: auto;
+}
+
+mat-header-row,
+mat-row,
+mat-footer-row {
+    min-height: 30px;
+    border: none;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+    height: 48px;
+}
+
+.mat-expansion-panel-spacing {
+    margin: 0;
+}

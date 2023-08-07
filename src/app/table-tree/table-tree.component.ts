@@ -183,13 +183,6 @@ export class DynamicDatabase {
   styleUrls: ['./table-tree.component.css']
 })
 export class TableTreeComponent implements OnInit {
-  // constructor(database: DynamicDatabase) {
-  //   this.treeControl = new FlatTreeControl<DynamicFlatNode>(this.getLevel, this.isExpandable);
-  //   this.dataSource = new DynamicDataSource(this.treeControl, database);
-
-  //   this.dataSource.data = database.initialData();
-  // }
-
   dummyDataMap: any[] = [
     {
       id: '0001',
@@ -202,8 +195,6 @@ export class TableTreeComponent implements OnInit {
         { id: '5005', type: 'Sugar' },
         { id: '5007', type: 'Powdered Sugar' },
         { id: '5006', type: 'Chocolate with Sprinkles' },
-        { id: '5003', type: 'Chocolate' },
-        { id: '5004', type: 'Maple' },
       ],
     },
     {
@@ -215,12 +206,20 @@ export class TableTreeComponent implements OnInit {
         { id: '5001', type: 'None' },
         { id: '5002', type: 'Glazed' },
         { id: '5005', type: 'Sugar' },
-        { id: '5003', type: 'Chocolate' },
-        { id: '5004', type: 'Maple' },
       ],
     },
     {
       id: '0003',
+      type: 'donut',
+      name: 'Old Fashioned',
+      ppu: 0.55,
+      topping: [
+        { id: '5001', type: 'None' },
+        { id: '5002', type: 'Glazed' },
+      ],
+    },
+    {
+      id: '0004',
       type: 'donut',
       name: 'Old Fashioned',
       ppu: 0.55,
