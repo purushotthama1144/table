@@ -7,14 +7,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableTreeComponent } from './table-tree/table-tree.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTreeModule} from '@angular/material/tree';
 // import { GanttChartModule } from 'smart-webcomponents-angular/ganttchart';
 import { ChartComponent } from './chart/chart.component';
+import { ChecklistDatabase, TreeComponent } from './tree/tree.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableTreeComponent,
-    ChartComponent
+    ChartComponent,
+    TreeComponent
   ],
   imports: [
     BrowserModule,
@@ -22,9 +30,15 @@ import { ChartComponent } from './chart/chart.component';
     BrowserAnimationsModule,
     MatTableModule,
     MatExpansionModule,
+    MatTreeModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule
     // GanttChartModule,
   ],
-  providers: [],
+  providers: [ChecklistDatabase],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
