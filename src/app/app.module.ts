@@ -16,6 +16,7 @@ import {MatTreeModule} from '@angular/material/tree';
 // import { GanttChartModule } from 'smart-webcomponents-angular/ganttchart';
 import { ChartComponent } from './chart/chart.component';
 import { ChecklistDatabase, TreeComponent } from './tree/tree.component';
+import { NgxDailyGanttChartModule } from 'ngx-daily-gantt-chart';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ChecklistDatabase, TreeComponent } from './tree/tree.component';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxDailyGanttChartModule
     // GanttChartModule,
   ],
   providers: [ChecklistDatabase],

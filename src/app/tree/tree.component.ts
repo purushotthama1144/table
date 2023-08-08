@@ -16,6 +16,7 @@ export class TodoItemFlatNode {
   expandable: boolean = false;
 }
 
+// Response
 const TREE_DATA = {
   firstLevel: [
     {
@@ -83,6 +84,7 @@ const TREE_DATA = {
   ],
 };
 
+// Service
 @Injectable()
 export class ChecklistDatabase {
   dataChange = new BehaviorSubject<TodoItemNode[]>([]);
@@ -136,27 +138,14 @@ export class ChecklistDatabase {
   styleUrls: ['./tree.component.css']
 })
 export class TreeComponent {
-
-  /** Map from flat node to nested node. This helps us finding the nested node to be modified */
   flatNodeMap = new Map<TodoItemFlatNode, TodoItemNode>();
-
-  /** Map from nested node to flattened node. This helps us to keep the same object for selection */
   nestedNodeMap = new Map<TodoItemNode, TodoItemFlatNode>();
-
-  /** A selected parent node to be inserted */
   selectedParent: TodoItemFlatNode | null = null;
-
-  /** The new item's name */
   newItemName = '';
-
   treeControl: FlatTreeControl<TodoItemFlatNode>;
-
   treeFlattener: MatTreeFlattener<TodoItemNode, TodoItemFlatNode>;
-
   dataSource: MatTreeFlatDataSource<TodoItemNode, TodoItemFlatNode>;
-
-  /** The selection for checklist */
-  checklistSelection = new SelectionModel<TodoItemFlatNode>(true /* multiple */);
+  checklistSelection = new SelectionModel<TodoItemFlatNode>(true);
 
   constructor(private _database: ChecklistDatabase) {
     this.treeFlattener = new MatTreeFlattener(
@@ -183,9 +172,7 @@ export class TreeComponent {
 
   hasNoContent = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.item === '';
 
-  /**
-   * Transformer to convert nested node to flat node. Record the nodes in maps for later use.
-   */
+
   transformer = (node: TodoItemNode, level: number) => {
     const existingNode = this.nestedNodeMap.get(node);
     const flatNode =
@@ -198,7 +185,6 @@ export class TreeComponent {
     return flatNode;
   };
 
-  /** Whether all the descendants of the node are selected. */
   descendantsAllSelected(node: TodoItemFlatNode): boolean {
     const descendants = this.treeControl.getDescendants(node);
     const descAllSelected =
@@ -209,14 +195,12 @@ export class TreeComponent {
     return descAllSelected;
   }
 
-  /** Whether part of the descendants are selected */
   descendantsPartiallySelected(node: TodoItemFlatNode): boolean {
     const descendants = this.treeControl.getDescendants(node);
     const result = descendants.some(child => this.checklistSelection.isSelected(child));
     return result && !this.descendantsAllSelected(node);
   }
 
-  /** Toggle the to-do item selection. Select/deselect all the descendants node */
   todoItemSelectionToggle(node: TodoItemFlatNode): void {
     this.checklistSelection.toggle(node);
     const descendants = this.treeControl.getDescendants(node);
@@ -224,18 +208,15 @@ export class TreeComponent {
       ? this.checklistSelection.select(...descendants)
       : this.checklistSelection.deselect(...descendants);
 
-    // Force update for the parent
     descendants.forEach(child => this.checklistSelection.isSelected(child));
     this.checkAllParentsSelection(node);
   }
 
-  /** Toggle a leaf to-do item selection. Check all the parents to see if they changed */
   todoLeafItemSelectionToggle(node: TodoItemFlatNode): void {
     this.checklistSelection.toggle(node);
     this.checkAllParentsSelection(node);
   }
 
-  /* Checks all the parents when a leaf node is selected/unselected */
   checkAllParentsSelection(node: TodoItemFlatNode): void {
     let parent: TodoItemFlatNode | null = this.getParentNode(node);
     while (parent) {
@@ -244,7 +225,6 @@ export class TreeComponent {
     }
   }
 
-  /** Check root node checked state and change it accordingly */
   checkRootNodeSelection(node: TodoItemFlatNode): void {
     const nodeSelected = this.checklistSelection.isSelected(node);
     const descendants = this.treeControl.getDescendants(node);
@@ -260,7 +240,6 @@ export class TreeComponent {
     }
   }
 
-  /* Get the parent node of a node */
   getParentNode(node: TodoItemFlatNode): TodoItemFlatNode | null {
     const currentLevel = this.getLevel(node);
 
@@ -280,4 +259,3 @@ export class TreeComponent {
     return null;
   }
 }
-

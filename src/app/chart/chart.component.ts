@@ -11,92 +11,68 @@ import { GanttChartTaskColumn } from 'smart-webcomponents-angular';
 
 
 export class ChartComponent implements OnInit {
-  // durationUnit = 'hour';
-  // taskColumns: GanttChartTaskColumn[] = [
-  //   {
-  //     label: 'Tasks',
-  //     value: 'label',
-  //     size: '60%'
-  //   },
-  //   {
-  //     label: 'Duration (hours)',
-  //     value: 'duration',
-  //     formatFunction: (date: any) => parseInt(date)
-  //   }
-  // ]
-
-  // dataSource = [
-  //   {
-  //     label: 'PRD & User-Stories',
-  //     dateStart: '2019-01-10',
-  //     dateEnd: '2019-02-10',
-  //     class: 'product-team',
-  //     type: 'task'
-  //   },
-  //   {
-  //     label: 'Persona & Journey',
-  //     dateStart: '2019-02-11',
-  //     dateEnd: '2019-03-10',
-  //     class: 'marketing-team',
-  //     type: 'task'
-  //   },
-  //   {
-  //     label: 'Architecture',
-  //     dateStart: '2019-03-11',
-  //     dateEnd: '2019-04-1',
-  //     class: 'product-team',
-  //     type: 'task'
-  //   },
-  //   {
-  //     label: 'Prototyping',
-  //     dateStart: '2019-04-02',
-  //     dateEnd: '2019-05-01',
-  //     class: 'dev-team',
-  //     type: 'task'
-  //   },
-  //   {
-  //     label: 'Design',
-  //     dateStart: '2019-05-02',
-  //     dateEnd: '2019-06-31',
-  //     class: 'design-team',
-  //     type: 'task'
-  //   },
-  //   {
-  //     label: 'Development',
-  //     dateStart: '2019-07-01',
-  //     dateEnd: '2019-08-10',
-  //     class: 'dev-team',
-  //     type: 'task'
-  //   },
-  //   {
-  //     label: 'Testing & QA',
-  //     dateStart: '2019-08-11',
-  //     dateEnd: '2019-09-10',
-  //     class: 'qa-team',
-  //     type: 'task'
-  //   },
-  //   {
-  //     label: 'UAT Test',
-  //     dateStart: '2019-09-12',
-  //     dateEnd: '2019-10-01',
-  //     class: 'product-team',
-  //     type: 'task'
-  //   },
-  //   {
-  //     label: 'Handover & Documentation',
-  //     dateStart: '2019-10-02',
-  //     dateEnd: '2019-11-01',
-  //     class: 'marketing-team',
-  //     type: 'task'
-  //   },
-  //   {
-  //     label: 'Release',
-  //     dateStart: '2019-11-01',
-  //     dateEnd: '2019-12-31',
-  //     class: 'release-team',
-  //     type: 'task'
-  //   }
-  // ]
+  tasks = [
+    {
+      id: 1,
+      label: 'task 1',
+      description: 'description for task 1',
+      start: '09:00',
+      end: '14:30',
+      statusList: [
+        {
+          start: '09:30',
+          color: '#18BFED'
+        },
+        {
+          start: '10:30',
+          color: '#b3c71e'
+        }
+      ]
+    },
+    {
+      id: 2,
+      label: 'task 2',
+      description: 'description for task 2',
+      start: '10:00',
+      end: '11:00',
+      isParent: true, // makes this row clickable & expandable
+      statusList: [
+        {
+          start: '09:30',
+          color: '#18BFED'
+        },
+        {
+          start: '09:45',
+          color: '#ff7300'
+        },
+        {
+          start: '10:30',
+          color: '#b3c71e'
+        }
+      ]
+    },
+    {
+      id: 3, // Unique ID
+      parentID: 2, // states this is a subtask
+      isHidden: true, // hidden by default
+      label: 'task 2a', // is shown inside the bars on timeline
+      description: 'description for task 2a',
+      tooltip: 'tooltip for task', // is shown when task is hovered
+      start: '10:00', // start time of the task
+      end: '14:25', // end time of the task
+      statusList: [
+        {
+          start: '11:30', // start time of first status
+          color: '#18BFED' // background color of the status
+        },
+        {
+          start: '12:30', // start time of second status = end time of first status
+          color: '#b3c71e',
+          tooltip: 'tooltip for status', // is shown when status is hovered
+        }
+      ]
+    }
+  ];
 
   constructor() { }
 

@@ -20,7 +20,7 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
-    "gantt-chart": "^1.1.0",
+    "ngx-daily-gantt-chart": "^1.5.2",
     "rxjs": "~7.5.0",
     "smart-webcomponents-angular": "^16.0.2",
     "tslib": "^2.3.0",
