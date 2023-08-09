@@ -13,10 +13,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTreeModule} from '@angular/material/tree';
-// import { GanttChartModule } from 'smart-webcomponents-angular/ganttchart';
 import { ChartComponent } from './chart/chart.component';
 import { ChecklistDatabase, TreeComponent } from './tree/tree.component';
-import { NgxDailyGanttChartModule } from 'ngx-daily-gantt-chart';
+import { NgGanttEditorModule } from 'ng-gantt';
 
 @NgModule({
   declarations: [
@@ -37,8 +36,7 @@ import { NgxDailyGanttChartModule } from 'ngx-daily-gantt-chart';
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
-    NgxDailyGanttChartModule
-    // GanttChartModule,
+    NgGanttEditorModule
   ],
   providers: [ChecklistDatabase],
   bootstrap: [AppComponent]

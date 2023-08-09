@@ -1,6 +1,3 @@
-<gantt-chart
-  [dayStart]="'09:00'"
-  [dayEnd]="'15:30'"
-  [tasks]="tasks"
-  [theme]="'gradient'"
-></gantt-chart>
+<div style="height:300px;">
+  <ng-gantt [options]="editorOptions" [data]="data" #editor></ng-gantt>
+</div>
