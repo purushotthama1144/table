@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,9 +13,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTreeModule} from '@angular/material/tree';
+import { NgGanttEditorModule } from 'ng-gantt';
 import { ChartComponent } from './chart/chart.component';
 import { ChecklistDatabase, TreeComponent } from './tree/tree.component';
-import { NgGanttEditorModule } from 'ng-gantt';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -30,14 +31,17 @@ import { NgGanttEditorModule } from 'ng-gantt';
     BrowserAnimationsModule,
     MatTableModule,
     MatExpansionModule,
-    MatTreeModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
-    NgGanttEditorModule
+    MatTreeModule,
+    NgGanttEditorModule,
+    NgApexchartsModule
+    
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [ChecklistDatabase],
   bootstrap: [AppComponent]
 })
